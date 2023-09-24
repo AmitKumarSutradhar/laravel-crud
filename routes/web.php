@@ -26,6 +26,8 @@ Route::middleware([
     Route::post('/store-product',[ProductController::class,'store'])->name('products.store');
     Route::get('/manage-product',[ProductController::class,'manage'])->name('products.manage');
     Route::get('/delete-product/{id}',[ProductController::class,'destroy'])->name('product.destroy');
+    Route::get('/edit-product/{id}',[ProductController::class,'edit'])->name('product.edit');
+    Route::post('/update-product/{id}',[ProductController::class,'update'])->name('products.update');
 });
 
 

@@ -95,17 +95,17 @@
                             @foreach($products as $product)
                                 <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="{{ asset('/assets/img/'.$product['image']) }}" alt="">
+                                    <img src="{{ asset($product->image) }}" style="height: 250px" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="{{ route('product-details',[ 'id' => $product['id'] ]) }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{ route('product-details',[ 'id' => $product->id ]) }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
-                                <h2><a href="{{ route('product-details',[ 'id' => $product['id'] ]) }}">{{ $product['name'] }}</a></h2>
+                                <h2><a href="{{ route('product-details',[ 'id' => $product->id ]) }}">{{ $product->name }}</a></h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>${{ $product['price'] }}</ins> <del>${{ $product['old_price'] }}</del>
+                                    <ins>${{ $product->price }}</ins>
                                 </div>
                             </div>
                             @endforeach

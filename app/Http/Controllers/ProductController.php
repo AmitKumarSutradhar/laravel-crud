@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $products = [];
+    protected $products = [], $product;
 
     public function create(){
         return view('backend.products.create');
@@ -27,11 +27,24 @@ class ProductController extends Controller
     }
 
     public function destroy($id){
-        $product = ProductInfo::find($id);
-        if (file_exists($product->image)){
-            unlink($product->image);
+        $this->product = ProductInfo::find($id);
+        if (file_exists($this->product->image)){
+            unlink($this->product->image);
         }
-        $product->delete();
+        $this->product->delete();
         return back()->with('success','Product deleted successfully.');
     }
+
+    public function edit($id){
+        $this->product = ProductInfo::find($id);
+        return view('backend.products.edit',[
+            'product' => $this->product
+        ]);
+    }
+
+    public function update(Request $request, $id)
+        {
+            ProductInfo::updateProduct($request, $id);
+            return redirect()->route('products.manage')->with('success','Product updated successfully.');
+        }
 }

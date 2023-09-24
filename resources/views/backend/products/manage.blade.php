@@ -39,8 +39,8 @@
                                         </td>
                                         <td>{{ $product->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                         <td>
-                                            <a href="" class="btn btn-sm btn-secondary">Edit</a>
-                                            <a href="{{ route('product.destroy',[ 'id' => $product->id]) }}" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="{{ route('product.edit', [ 'id' => $product->id ]) }}" class="btn btn-sm btn-secondary">Edit</a>
+                                            <a href="{{ route('product.destroy',[ 'id' => $product->id]) }}" onclick="return confirm('Are you sure ot delete this?')" class="btn btn-sm btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

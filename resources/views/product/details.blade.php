@@ -79,15 +79,15 @@
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="">Home</a>
-                            <a href="">{{ $productDetails['category_name'] }}</a>
-                            <a href="">{{ $productDetails['name'] }}</a>
+                            <a href="">{{ $productDetails->category_name }}</a>
+                            <a href="">{{ $productDetails->name }}</a>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="{{asset('/assets/img/'.$productDetails['image'])}}" alt="">
+                                        <img src="{{asset($productDetails->image)}}" alt="">
                                     </div>
 
                                     <div class="product-gallery">
@@ -100,9 +100,9 @@
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">{{ $productDetails['name'] }}</h2>
+                                    <h2 class="product-name">{{ $productDetails->name }}</h2>
                                     <div class="product-inner-price">
-                                        <ins>${{ $productDetails['price'] }}</ins> <del>${{ $productDetails['old_price'] }}</del>
+                                        <ins>${{ $productDetails->price }}</ins> <del>${{ $productDetails['old_price'] }}</del>
                                     </div>
 
                                     <form action="" class="cart">
@@ -113,7 +113,7 @@
                                     </form>
 
                                     <div class="product-inner-category">
-                                        <p>Category: <a href="">{{ $productDetails['category_name'] }}</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                        <p>Category: <a href="">{{ $productDetails->category_name }}</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
                                     </div>
 
                                     <div role="tabpanel">
@@ -124,7 +124,7 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="home">
                                                 <h2>Product Description</h2>
-                                                <p>{{ $productDetails['description'] }}</p>
+                                                <p>{{ $productDetails->description }}</p>
 
 
                                             </div>

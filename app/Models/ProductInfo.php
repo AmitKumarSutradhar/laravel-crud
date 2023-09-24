@@ -36,4 +36,31 @@ class ProductInfo extends Model
 
 //        ProductInfo::create($request->all());
     }
+
+    public static function updateProduct($request, $id){
+        self::$productInfo = ProductInfo::find($id);
+
+        self::$imageFile                        =  $request->file('image');
+        if (self::$imageFile)
+        {
+            if (file_exists(self::$productInfo->image)){
+                unlink(self::$productInfo->product->image);
+            }
+            self::$imageName                        =  self::$imageFile->getClientOriginalName();
+            self::$imageDirectory                   =  'admin/upload-files/products/';
+            self::$imageFile                        ->  move(self::$imageDirectory,self::$imageName);
+            self::$imageUrl                         =  self::$imageDirectory.self::$imageName;
+        } else{
+            self::$imageUrl = self::$productInfo->image;
+        }
+
+
+        self::$productInfo->name                =   $request->name;
+        self::$productInfo->category_name       =   $request->category_name;
+        self::$productInfo->price               =   $request->price;
+        self::$productInfo->description         =   $request->description;
+        self::$productInfo->image               =   self::$imageUrl;
+        self::$productInfo->status              =   $request->status;
+        self::$productInfo->save();
+    }
 }
